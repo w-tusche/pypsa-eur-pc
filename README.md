@@ -29,7 +29,7 @@ Related content to PyPSA-Eur-PC:
 
 - [atlite-pc](https://github.com/w-tusche/atlite-pc.git)
 - Analysis and plotting code for paper "Impacts of photocatalytic hydrogen production on the European energy system": [photocatalysis-europe](https://github.com/w-tusche/photocatalysis-europe.git)
-- [Raw data of PC-0 and PC-50 cases for paper: Impacts of photocatalytic hydrogen production on the European energy system](https://10.5281/zenodo.16360844)
+- [Raw data of PC-0 and PC-50 cases for paper: Impacts of photocatalytic hydrogen production on the European energy system](https://doi.org/10.5281/zenodo.16360844)
 
 ## Usage
 
