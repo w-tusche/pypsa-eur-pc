@@ -3,6 +3,8 @@ SPDX-FileCopyrightText: 2017-2024 The PyPSA-Eur Authors
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
+[![zenodo PyPSA-Eur-PC](https://zenodo.org/badge/1021494699.svg)](https://doi.org/10.5281/zenodo.16566440)
+
 # PyPSA-Eur-PC: PyPSA with added Photocatalysis (PC) Module
 
 This repository is a fork of the main branch of the [PyPSA-Eur repository](https://github.com/pypsa/pypsa-eur) (branching of at v0.12.0) with the aim to introduce the new technology of photocatalysis to the original model.
