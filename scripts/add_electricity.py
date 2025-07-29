@@ -382,7 +382,7 @@ def attach_wind_and_solar(
 ):
     add_missing_carriers(n, carriers)
     for car in carriers:
-        if car == "hydro":
+        if car in {"hydro"}:
             continue
 
         with xr.open_dataset(getattr(input_profiles, "profile_" + car)) as ds:
@@ -881,6 +881,13 @@ if __name__ == "__main__":
             carriers,
             **p,
         )
+
+    # if "photocatalysis" in renewable_carriers:
+    #    attach_photocatalysis(
+    #        n,
+    #        costs,
+    #        snakemake.input,
+    #    )
 
     estimate_renewable_caps = params.electricity["estimate_renewable_capacities"]
     if estimate_renewable_caps["enable"]:

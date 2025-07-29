@@ -577,7 +577,8 @@ def remove_non_electric_buses(n):
     """
     if to_drop := list(n.buses.query("carrier not in ['AC', 'DC']").carrier.unique()):
         logger.info(f"Drop buses from PyPSA-Eur with carrier: {to_drop}")
-        n.buses = n.buses[n.buses.carrier.isin(["AC", "DC"])]
+        # n.buses = n.buses[n.buses.carrier.isin(["AC", "DC"])]
+        n.buses = n.buses[n.buses.carrier.isin(["AC", "DC", "photocatalysis"])]
 
 
 def patch_electricity_network(n):
@@ -880,6 +881,19 @@ def add_generation(n, costs):
             efficiency2=costs.at[carrier, "CO2 intensity"],
             lifetime=costs.at[generator, "lifetime"],
         )
+
+
+def add_photocatalysis(n):
+    """
+    Reroutes photocatalysis to H2 buses.
+    """
+    photocatalysis_buses = n.generators[
+        n.generators.carrier == "photocatalysis"
+    ].bus.apply(func=lambda x: x + " H2")
+
+    n.generators.loc[n.generators.carrier == "photocatalysis", "bus"] = (
+        photocatalysis_buses.values
+    )
 
 
 def add_ammonia(n, costs):
@@ -4034,6 +4048,9 @@ if __name__ == "__main__":
 
     if options["allam_cycle"]:
         add_allam(n, costs)
+
+    if "photocatalysis" in snakemake.params.renewable_carriers:
+        add_photocatalysis(n)
 
     n = set_temporal_aggregation(
         n, snakemake.params.time_resolution, snakemake.input.snapshot_weightings

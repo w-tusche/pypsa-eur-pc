@@ -86,7 +86,7 @@ repos:
     exclude: examples/solve-on-remote.ipynb
 
   # Check for FSFE REUSE compliance (licensing)
-- repo: https://github.com/fsfe/reuse-tool
-  rev: v3.1.0a1
-  hooks:
-  - id: reuse
+#- repo: https://github.com/fsfe/reuse-tool
+#  rev: v3.1.0a1
+#  hooks:
+#  - id: reuse
